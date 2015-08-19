@@ -13,3 +13,17 @@
  *= require_tree .
  *= require_self
  */
+ @font-face {
+
+ font-family: 'BNazanin';
+ src: url('BNazanin.eot');
+ src: local('BNazanin'), url('/assets/BNazanin.woff') format('woff'), 
+ 	  url('/assets/BNazanin.ttf')  format('truetype'), 
+      url('/assets/BNazanin.svg#webfont')  format('svg');
+ font-weight: normal;
+ font-style: normal;
+}
+
+body{
+	font-family: BNazanin !important;
+}

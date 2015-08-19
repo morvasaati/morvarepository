@@ -1,113 +1,101 @@
 
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title> sign in </title>
+  <link rel="stylesheet" href="/assets/sign_up.css" />
+  <script src="/assets/sign_up.js" type="text/javascript"></script>
 
-</br></br></br></br></br></br>
-<link href="/assets/css-profile/select2.css" rel="stylesheet" type="text/css"/>
-<link href="/assets/css-profile/login-soft-rtl.css" rel="stylesheet" type="text/css"/>
+
+</head>
+<body>
+<!-- multistep form -->
+<!-- <form id="mmsform">  -->
+<%= form_for(resource, :as => resource_name, :url => session_path(resource_name) ,:html => {:class => "mmsform"}) do |f| %>
+  <!-- progressbar -->
+  <!-- <ul id="progressbar">
+    <li class="active">Account Setup</li>
+    <li>Social Profiles</li>
+    <li>Personal Details</li>
+  </ul> -->
+  <!-- fieldsets -->
+  </br></br>
+  <fieldset style="margin-top:45%;margin-bottom:20%;position:inherit;">
+    <h2 class="fs-title">ورود به سایت</h2>
+    <h3 class="fs-subtitle"></h3>
+    
+    <%= f.text_field :email, autofocus: true , placeholder:"ایمیل" ,class: "input-type" , style: "direction:rtl;" %>
+<!--     <input type="text" name="email" placeholder="Email" /> -->
 
 
-<!-- BEGIN LOGIN -->
-<div class="container">
-    <div class="row">
-      <div class="col-md-4 col-md-offset-4">
-        <div class="panel panel-default">
-          <div class="panel-heading">
-            <h3 class="panel-title">ورود به سایت</h3>
-        </div>
-          <div class="panel-body">
-    <!-- BEGIN LOGIN FORM -->
-    <%= form_for(resource, :as => resource_name, :url => session_path(resource_name) , class:"login-form") do |f| %>
-      <h3 class="form-title">ورود از طریق اکانت</h3>
-      <div class="alert alert-danger display-hide">
-        <button class="close" data-close="alert"></button>
-        <span>
-        Enter any username and password. </span>
-      </div>
-      
+<!--    <input type="password" name="pass" placeholder="Password" />  -->
+   <%= f.password_field :password, autocomplete: "off" ,placeholder:"رمز عبور" ,class: "input-type" , style: "direction:rtl;"%> 
 
-      <div class="form-group form-md-line-input has-success">
-        <div class="form-group">
+<!--    <input type="password" name="cpass" placeholder="Confirm Password" />  -->
 
-            <%= f.text_field :email , class:"form-control" , :placeholder => "نام کاربری یا ایمیل" %>
-          <label for="form_control_1">نام کاربری</label>
-        </div>
-      </div>
-      
-      <div class="form-group form-md-line-input has-success">
-         <div class="form-group">
-          <%= f.password_field :password  , class:"form-control" , :autocomplete => "off" , :placeholder => "رمز عبور" %>
-          <label for="form_control_1">رمز عبور</label>
-        </div>
-      </div>
-
-      
-      <div class="form-actions">
+      <div class="form-actions" style="col-md-12">
         <div>
           <% if devise_mapping.rememberable? -%>
-            <label class="checkbox" style="padding-right:5%;">
                 
-                <%= f.check_box :remember_me , :value => "1" ,style:"margin-right:-5%;"%>
-              مرا به خاطر بسپار
-            </label>
+                مرا به خاطر بسپار <%= f.check_box :remember_me , :value => "1" ,style:""%>
             <% end -%>
         </div>
-          <%= f.submit "ورود" , :class=>"btn blue pull-right" %>   
-      </div>
-      </br></br>
+
       <% if devise_mapping.recoverable? && controller_name != 'passwords' && controller_name != 'registrations' %>
         <div class="forget-password">
           <h4>آیا رمز عبور خود را فراموش کرده اید؟</h4> 
           <p>
              نگران نباشید, روی
-              <%= link_to "اینجا", new_password_path(resource_name) %><br />
+              <%= link_to "اینجا", new_password_path(resource_name) ,style:"color:blue;"%><br />
             کلیک کنید تا رمز جدید به شما داده شود!
           </p>
         </div>
       <% end -%>
-
-    <%end%>
-    <!-- END LOGIN FORM -->
-    
-    
-          </div>
       </div>
-    </div>
-  </div>
-</div>
 
 
 
-<!-- END LOGIN -->
+ <!-- <input type="button" name="next" class="next action-button" value="Next" />  -->
+<!--    <div class="action-button input-type"> -->
+    <%= f.submit "ذخیره"  , class: "action-button input-type"%>
+    
+ <!--  </div> -->
 
-<!-- BEGIN PAGE LEVEL PLUGINS -->
-<script src="/assets/js-profile/jquery.validate.min.js" type="text/javascript"></script>
-<script src="/assets/js-profile/jquery.backstretch.min.js" type="text/javascript"></script>
-<script type="text/javascript" src="/assets/js-profile/select2.min.js"></script>
-<!-- END PAGE LEVEL PLUGINS -->
-<!-- BEGIN PAGE LEVEL SCRIPTS -->
-<script src="/assets/js-profile/metronic.js" type="text/javascript"></script>
-<script src="/assets/js-profile/layout.js" type="text/javascript"></script>
-<script src="/assets/js-profile/demo.js" type="text/javascript"></script>
-<script src="/assets/js-profile/login-soft.js" type="text/javascript"></script>
-<!-- END PAGE LEVEL SCRIPTS -->
-<script>
-jQuery(document).ready(function() {     
-    Metronic.init(); // init metronic core components
-  Layout.init(); // init current layout
-    Login.init();
-    Demo.init();
-       // init background slide images
-       $.backstretch([
-        "/assets/admin/pages/media/bg/1.jpg",
-        "/assets/admin/pages/media/bg/2.jpg",
-        "/assets/admin/pages/media/bg/3.jpg",
-        "/assets/admin/pages/media/bg/4.jpg"
-        ], {
-          fade: 1000,
-          duration: 8000
-    }
-    );
-});
-</script>
+
+  </fieldset>
+
+  <!-- <fieldset>
+    <h2 class="fs-title">Social Profiles</h2>
+    <h3 class="fs-subtitle">Your presence on the social network</h3>
+    <input type="text" name="twitter" placeholder="Twitter" />
+    <input type="text" name="facebook" placeholder="Facebook" />
+    <input type="text" name="gplus" placeholder="Google Plus" />
+    <input type="button" name="previous" class="previous action-button" value="Previous" />
+    <input type="button" name="next" class="next action-button" value="Next" />
+  </fieldset>
+  <fieldset>
+    <h2 class="fs-title">Personal Details</h2>
+    <h3 class="fs-subtitle">We will never sell it</h3>
+    <input type="text" name="fname" placeholder="First Name" />
+    <input type="text" name="lname" placeholder="Last Name" />
+    <input type="text" name="phone" placeholder="Phone" />
+    <textarea name="address" placeholder="Address"></textarea>
+    <input type="button" name="previous" class="previous action-button" value="Previous" />
+    <input type="submit" name="submit" class="submit action-button" value="Submit" /> 
+  </fieldset> -->
+
+<!--  </form> --> 
+<%end%>
+<!-- jQuery -->
+<script src="http://thecodeplayer.com/uploads/js/jquery-1.9.1.min.js" type="text/javascript"></script>
+<!-- jQuery easing plugin -->
+<script src="http://thecodeplayer.com/uploads/js/jquery.easing.min.js" type="text/javascript"></script>
+
+</body>
+</html>
+
+
 
 
 

@@ -1,4 +1,4 @@
-</br></br></br></br>
+ </br></br></br></br>
 <!DOCTYPE html>
 <!-- 
 Template Name: Metronic - Responsive Admin Dashboard Template build with Twitter Bootstrap 3.3.2
@@ -101,10 +101,11 @@ License: You must have a valid license purchased only from themeforest(the above
       <!-- END SAMPLE PORTLET CONFIGURATION MODAL FORM-->
       <!-- BEGIN PAGE HEADER-->
       <!-- BEGIN PAGE HEAD -->
+      
       <div class="page-head">
         <!-- BEGIN PAGE TITLE -->
         <div class="page-title">
-          <h1>   <%= @profile.company_name %> </h1>
+          <h1>   <%= @current_user.company_name %> </h1>
         </div>
         <!-- END PAGE TITLE -->
         <!-- BEGIN PAGE TOOLBAR -->
@@ -226,7 +227,7 @@ License: You must have a valid license purchased only from themeforest(the above
                       <li>
                       <div style="height:100px; width:100px;">
                        <!--  <strong>Avatar:</strong> -->
-                        <%=image_tag @profile.avatar.url %>
+                        <%=image_tag @current_user.avatar.url %>
                       </div>
                       </li>
                       <li>
@@ -708,9 +709,7 @@ License: You must have a valid license purchased only from themeforest(the above
               <div class="tab-pane" id="tab_1_3">
                 <div class="row profile-account">
 
-                  <div class="col-md-9">
-                  <%= render 'form' %>
-                  </div>
+                  
                   <!--end col-md-9-->
                 </div>
               </div>

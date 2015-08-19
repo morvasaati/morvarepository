@@ -1,13 +1,18 @@
 class RegistrationsController < Devise::RegistrationsController
 
-  
+  # before_save :create_profile
 
   def create
     super
   end
 
-  def after_sign_up_path_for(user)
-    redirect_to :controller => 'profiles' ,:action => 'create'
-  end
-  
+ private
+  def create_profile(user)
+   	 if user.profile.present?
+  		profile_path(user)
+  	 else
+  	    new_profile_path(user)
+  	 end
+   end
+
 end

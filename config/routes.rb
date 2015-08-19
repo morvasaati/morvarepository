@@ -1,11 +1,66 @@
 Rails.application.routes.draw do
-  # devise_for :users
+  resources :contacts
+
+  resources :cities do 
+    collection do
+      get 'tehran'
+      get 'esfehan'
+      get 'ghom'
+      get 'gilan'
+      get 'golestan'
+      get 'mazandaran'
+      get 'kerman'
+      get 'kermanshah'
+      get 'azarbayjansharghi'
+      get 'azarbayjangharbi'
+      get 'ardebil'
+      get 'eilam'
+      get 'boushehr'
+      get 'charmahalebakhtiari'
+      get 'khorasanjounubi'
+      get 'khorasanshomali'
+      get 'khorasanrazavi'
+      get 'khuzestan'
+      get 'zanjan'
+      get 'systanvabalouchestan'
+      get 'semnan'
+      get 'fars'
+      get 'ghazvin'
+      get 'kohgiluyevabayerahmad'
+      get 'kordestan'
+      get 'lorestan'
+      get 'markazi'
+      get 'hormozgan'
+      get 'hamedan'
+      get 'yazd'
+      get 'alborz'
+    end
+  end
+
+
+  devise_for :users
   resources :reports
+
+  resources :profiles do
+    collection do
+      get 'mannagers'
+      get 'ourprojects'
+      get 'memari'
+      get 'saze'
+      get 'tasisat'
+      get 'tamasbama'
+      get 'darbareyema'
+      get 'taghdirname'
+      get 'newUser'
+      post 'addUser'
+    end
+  end
 
   resources :profiles
 
   resources :projects
-  resources :users
+  resources :example_mailers
+
 
 
   # The priority is based upon order of creation: first created -> highest priority.
@@ -13,19 +68,9 @@ Rails.application.routes.draw do
 
   # You can have the root of your site routed with "root"
   root 'profiles#homepage'
-  devise_for :users , :controller => {:registrations => "registrations"}
+  # devise_for :users , :controller => {:registrations => "registrations"}
 
-  resources :profiles do
-  collection do
-    post 'memari'
-    post 'saze'
-    post 'tasisat'
-    post 'tamasbama'
-    post 'darbareyema'
-    post 'taghdirname'
-  end
-end
-
+  
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 

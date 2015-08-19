@@ -46,4 +46,7 @@ end
 gem 'cancan', '~> 1.6.10'
 gem "paperclip", "~> 4.3"
 gem 'devise', '~> 3.4.0'
+gem "swf_fu", "~> 2.0"
+# gem "figaro"
+
 

@@ -52,7 +52,8 @@
                       </div>
                       <div class="portlet-body form">
                         <!-- BEGIN FORM-->
-                        <%= form_for(@profile) do |f| %>
+                        <%form_for Profile.new do |f|%>
+                        
                           <% if @profile.errors.any? %>
                             <div id="error_explanation">
                               <h2><%= pluralize(@profile.errors.count, "error") %> prohibited this profile from being saved:</h2>

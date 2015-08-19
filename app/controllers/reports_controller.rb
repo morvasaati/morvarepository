@@ -6,12 +6,18 @@ class ReportsController < ApplicationController
   # GET /reports
   # GET /reports.json
   def index
+    if current_user.role == "کارفرما"
+      redirect_to root_url
+    end
     @reports = Report.all
   end
 
   # GET /reports/1
   # GET /reports/1.json
   def show
+    if current_user.role == "کارفرما"
+      redirect_to root_url
+    end
     @projects_name = []
     @projects = Project.all
     @projects.each do |p|
@@ -21,6 +27,9 @@ class ReportsController < ApplicationController
 
   # GET /reports/new
   def new
+    if current_user.role == "کارفرما"
+      redirect_to root_url
+    end
     @projects_name = []  
     @report = Report.new
     @projects =  Project.all
@@ -31,11 +40,17 @@ class ReportsController < ApplicationController
 
   # GET /reports/1/edit
   def edit
+    if current_user.role == "کارفرما"
+      redirect_to root_url
+    end
   end
 
   # POST /reports
   # POST /reports.json
   def create
+    if current_user.role == "کارفرما"
+      redirect_to root_url
+    end
     @report = Report.new(report_params)
 
     respond_to do |format|
@@ -54,6 +69,9 @@ class ReportsController < ApplicationController
   # PATCH/PUT /reports/1
   # PATCH/PUT /reports/1.json
   def update
+    if current_user.role == "کارفرما"
+      redirect_to root_url
+    end
     respond_to do |format|
       if @report.update(report_params)
         format.html { redirect_to @report, notice: 'Report was successfully updated.' }

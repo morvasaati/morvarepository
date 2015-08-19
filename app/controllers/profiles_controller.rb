@@ -1,7 +1,8 @@
 class ProfilesController < ApplicationController
   # load_and_authorize_resource :except => :homepage
-  before_action :set_profile, only: [:show, :edit, :update, :destroy]
-    before_action :authenticate_user! , :except => [:homepage , :memari , :saze , :tasisat,:taghdirname ,:tamasbama,:darbareyema]
+  before_action :authenticate_user! , :except => [:mannagers, :ourprojects ,  :homepage , :memari , :saze , :tasisat,:taghdirname,:darbareyema ,:tamasbama]
+  before_action :set_profile, only: [:show, :edit, :update, :destroy , :addUser]
+  before_action :check_admin , only: [:addUser]
   # GET /profiles
   # GET /profiles.json
   def index
@@ -15,6 +16,22 @@ class ProfilesController < ApplicationController
     @user = current_user
   end
 
+  def newUser
+    @user = User.new
+  end
+
+  def addUser
+
+    @user = User.new(user_params)
+    respond_to do |format|
+      if @user.save
+        format.html { redirect_to root_url, notice: 'user was successfully created.' }
+      else
+        format.html { render :newUser }
+      end
+    end
+
+  end
   # GET /profiles/new
   def new
     @profile = Profile.new
@@ -28,7 +45,7 @@ class ProfilesController < ApplicationController
   # POST /profiles.json
   def create
     @profile = Profile.new(profile_params)
-
+    @profile.user_id = current_user.id
     respond_to do |format|
       if @profile.save
         format.html { redirect_to @profile, notice: 'Profile was successfully created.' }
@@ -64,6 +81,13 @@ class ProfilesController < ApplicationController
     end
   end
 
+  def mannagers
+  end
+
+  def ourprojects
+  end
+
+
   def memari
   end
 
@@ -74,6 +98,7 @@ class ProfilesController < ApplicationController
   end
 
   def tamasbama
+    redirect_to "contacts/new"
   end
 
   def darbareyema
@@ -82,14 +107,26 @@ class ProfilesController < ApplicationController
   def taghdirname
   end
 
+  def download
+    send_file(@filename, :filename => "Binder1 opt.pdf")
+  end
+
   private
+    def check_admin
+      unless current_user.role ==  "ادمین"
+        redirect_to root_url
+      end
+    end
     # Use callbacks to share common setup or constraints between actions.
     def set_profile
-      @profile = Profile.find(params[:id])
+      @profile = current_user.profile
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def profile_params
-      params.require(:profile).permit(:company_name, :work_experience, :register_number, :tel, :fax, :image , :avatar)
+      params.require(:profile).permit(:company_name, :work_experience, :register_number, :tel, :fax, :image , :avatar , :user_id)
+    end
+    def user_params
+      params.require(:user).permit(:email, :password_confirmation, :password, :role ,:company_name , :work_experience , :register_number , :tel ,:fax)
     end
 end

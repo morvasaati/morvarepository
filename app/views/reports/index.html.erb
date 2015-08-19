@@ -39,7 +39,9 @@
                 <th >  <%= link_to "دانلود فایل", report.document.url, target: "_blank" %></td>
                 <th ><%= link_to 'جزئيات بیشتر', report , class:"btn btn-sh green hidden-print margin-bottom-5"%></td>
                 <th ><%= link_to 'ویرایش', edit_report_path(report) , class:"btn btn-sh blue hidden-print margin-bottom-5" %></td>
+                <% if current_user.role == "ادمین"%>
                 <th ><%= link_to 'حذف', report, method: :delete, data: { confirm: 'Are you sure?' } , class:"btn btn-sh red hidden-print margin-bottom-5" %></td>
+                <%end%>
       </tr>
     <% end %>
                 </tr>

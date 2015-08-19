@@ -2,132 +2,82 @@
 <html>
 <head > 
   <title>MemariVaMohit</title>
+
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
-  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%#= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
 <link href="/assets/css/template.css" rel="stylesheet">
-<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
   <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
     <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
   <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
-</head>
-<body>
+      <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="/assets/css/template.css" rel="stylesheet">
+  </head>
+  
+<body style="font-family:BYekan; <% if params[:controller] == 'contacts' %> background-size:cover;background-image: url(/assets/14.jpg);%><%end%>">
 
 <!-- **************** header ***************** -->
 
 
 
-      <header id="header" class="site-header">
-        <nav id="topbar" class="site-topbar visible-lg visible-md">
-          <div class="container">
-            <div class="row">
-              <div class="col-sm-6">سوالی دارید ؟؟ با شماره من تماس بگیرید : 09300000000</div>
-              <div class="social-links col-sm-6">
-                <a href="#"><i class="fa fa-facebook"></i></a>
-                <a href="#"><i class="fa fa-twitter"></i></a>
-                <a href="#"><i class="fa fa-google-plus"></i></a>
-                <a href="#"><i class="fa fa-pinterest"></i></a>
-              </div>
-            </div>
-          </div>
+      <header id="header" class="">
+      <nav id="topbar" class="site-topbar visible-lg visible-md">
+          <div style="margin-left:40%">به وب سایت مشاوران معماری و محیط خوش آمدید </div>
         </nav>
+          <nav class="navbar navbar-default">
+            <div class="container-fluid" style="margin-right:34%;">
+    <!-- Brand and toggle get grouped for better mobile display -->
 
-        <nav id="navbar" class="site-navbar navbar navbar-static-top one-page-nav" ,role="navigation">
-          <div class="container">
-            <div class="navbar-header">
-              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-collapse-1">
-                <span class="sr-only">Toggle navigation</span>
-                <i class="fa fa-bars"></i>
-              </button>
-                <h1 class="navbar-brand">
 
-            <i class="fa fa-power-off"></i>
-                
-                  <a href="index.html"> 
-  	              <% if current_user.nil? %>
-  	      			     <%= link_to "ورود", new_user_session_path , style:"background-color:white;" %>
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1" style="float:right;">
+      <ul class="nav navbar-nav">
+        <li><%= link_to "تقدیر نامه ها", taghdirname_profiles_path,:method => :get , style: "font-family:BNazanin;font-weight: bold;font-size: 132%;"%></li>
+
+                        <li><%= link_to "پروژه ها", ourprojects_profiles_path,:method => :get , style: "font-family:BNazanin;font-weight: bold;font-size: 132%;"%></li>
+                         
+
+                        <li><%= link_to "تماس با ما", new_contact_path,:method => :get , style: "font-family:BNazanin;font-weight: bold;font-size: 132%;"%></li>
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" style="font-family:BNazanin;font-weight: bold;font-size: 132%;">کادر فنی <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li><%= link_to "معماری", memari_profiles_path,:method => :get , :class => "button" , style: "font-family:BNazanin;font-weight: bold;font-size: 132%;"%></li>
+                          <li><%= link_to "تاسیسات", tasisat_profiles_path, :method => :get ,:class => "button" , style: "font-family:BNazanin;font-weight: bold;font-size: 132%;"%></li>
+                          <li><%= link_to "سازه", saze_profiles_path,:method => :get , :class => "button" , style: "font-family:BNazanin;font-weight: bold;font-size: 132%;"%></li>
+                            <!-- <li style="direction:rtl;"><a href="#">تاسیسات</a></li>
+                            <li style="direction:rtl;"><a href="#">معماری</a></li>
+                            <li style="direction:rtl;"><a href="#">سازه</a></li> -->
+          </ul>
+        </li>
+      </ul>
+      
+      <ul class="nav navbar-nav navbar-left">
+      <li><%= link_to "خانه", root_url,:method => :get , style: "font-family:BNazanin;font-weight: bold;font-size: 132%;"%></li>
+
+      </ul>
+    </div><!-- /.navbar-collapse -->
+      <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                  <span class="sr-only">Toggle navigation</span>
+                  <span class="icon-bar"></span>
+                  <span class="icon-bar"></span>
+                  <span class="icon-bar"></span>
+                </button>
+            <% if current_user.nil? %>
+                     <%= link_to "ورود", new_user_session_path , :class=>"navbar-brand" , style:"margin-left: -110%;color: #AD1137;font-size: 155%;font-family: BNazanin;"%>
                       
-                     <%= link_to "ثبت نام",new_user_registration_path  , style:"padding-right:10%"%>
-  	      		    <% else %>
-  	                <%= link_to  'خروج' , destroy_user_session_path ,style:"background-color:white;", method: :delete %>
+                  <% else %>
+                    <%= link_to  'خروج' , destroy_user_session_path ,:class =>"navbar-brand", style:"margin-left: -110%;color: #AD1137;font-size: 155%;font-family: BNazanin;", method: :delete %>
                   <% end %>
-                  
-  	  			      </a>
-                  </h1>
-            </div>
-
-             <% if  current_user.nil? %> 
-              
-            <div class="collapse navbar-collapse" id="navbar-collapse-1">
-              <ul id="navigation" class="nav navbar-nav navbar-left">
-                <li><button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown"><%= link_to "خانه",  root_url  %></button></li>
-               
-                <div class="dropdown" style="direction:rtl; float:right;">
-                  <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown"><span class="caret"></span>کادر فنی
-                  </button>
-                  <ul class="dropdown-menu" style="direction:rtl;">
-                  <li><%= link_to "معماری",  memari_profiles_path , method: :post %></li>
-                  <li><%= link_to "تاسیسات",  tasisat_profiles_path , method: :post %></li>
-                  <li><%= link_to "سازه",  saze_profiles_path , method: :post %></li>
-                    <!-- <li style="direction:rtl;"><a href="#">تاسیسات</a></li>
-                    <li style="direction:rtl;"><a href="#">معماری</a></li>
-                    <li style="direction:rtl;"><a href="#">سازه</a></li> -->
-                  </ul>
-                </div>
-                </li>
-
-               
-                 <li><button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown"><li><%= link_to "تقدیر نامه ها",  taghdirname_profiles_path , method: :post %></li></button></li>
-                  <li><button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown"><li><%= link_to "درباره ما",  darbareyema_profiles_path , method: :post %></li></button></li>
-                   <li><button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown"><%= link_to "تماس با ما",  tamasbama_profiles_path , method: :post %></button></li>
-<!--                 <li><a href="#contact">تماس</a></li> -->
-              </ul>
-            </div>
-            <%end%>
-            <%if not current_user.nil? and current_user.role == 'ادمین' %>
-            <div class="collapse navbar-collapse" id="navbar-collapse-1">
-              <ul id="navigation" class="nav navbar-nav navbar-left">
-                
-                <li><button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown"><%= link_to "خانه",  root_url  %></button></li>
-                <li><button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown"><%= link_to "پروژه ها",{controller: "projects", action: "index"} %></button></button></li>
-                <li><button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown"><%= link_to "لیست کاربران",{controller: "profiles", action: "index"} %></button></li>
-                <li><button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown"><%= link_to "گزارش ها",{controller: "reports", action: "index"} %></button></li>
-<!--                 <li><a href="#contact">تماس</a></li> -->
-              </ul>
-            </div>
-            <%end%>
-            <%if not current_user.nil? and current_user.role=="ناظر"%>
-            <div class="collapse navbar-collapse" id="navbar-collapse-1">
-              <ul id="navigation" class="nav navbar-nav navbar-left">
-                <li><button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown"><%= link_to "خانه",  root_url  %></button></li>
-               
-                </li>
-                <li><button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown"><%= link_to "گزارش ها",{controller: "reports", action: "index"} %></button></li>
-<!--                 <li><a href="#contact">تماس</a></li> -->
-              </ul>
-            </div>
-
-            <%end%>
-
-            <%if not current_user.nil? and current_user.role=="کارفرما"%>
- <div class="collapse navbar-collapse" id="navbar-collapse-1">
-              <ul id="navigation" class="nav navbar-nav navbar-left">
-                <li><button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown"><%= link_to "خانه",  root_url  %></button></li>
-               
-                </li>
-                <li><button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown"><%= link_to "پروژه ها",{controller: "projects", action: "index"} %></button></li>
-                 <li><button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown"><%= link_to "پروفایل" , profiles_path(:profile_id => current_user.id)  %></button></li>
-<!--                 <li><a href="#contact">تماس</a></li> -->
-              </ul>
-            </div>
-            <%end%>
-              
-        
-          </div>
-        </nav>
+      </div>
+  </div><!-- /.container-fluid -->
+</nav>
       </header>
 
 <!-- ************ payane header ************* -->
@@ -138,9 +88,13 @@
     <p class="alert"><%= alert %></p>
   <% end %>
 
-<div >
+<div style="margin-right:15%;margin-left:15%" >
 <%= yield %>
 </div>
+<br><br>
+<br><br>
+<br><br>
+<br><br>
 <!-- ********** footer ********** -->
 
  <footer id="footer" class="site-footer" >
@@ -148,72 +102,16 @@
 
           <div id="sidebar-footer-1">
             <div class="row">
-
-              <aside class="widget col-md-3 col-sm-6">
-                <h5 class="widget-title">درباره ما</h5>
-                <p>لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است.<a href="#">ادامه مطلب</a></p>
-              </aside>
-
-              <aside class="widget col-md-3 col-sm-6">
-                <h5 class="widget-title">تماس</h5>
-                <div class="textwidget">
-                  <div class="adr">
-                    <div class="street-address">ایران تهران</div>
-                    <span class="locality">تهران</span>,
-                    <abbr class="region" title="New York"></abbr>
-                    <span class="postal-code"></span>
-                    <span class="country-name">ایران</span>
-                  </div>
-                  <div>تلفن: <span class="tel">09300000000</span></div>
-                  <div>وبسایت: <a class="url" href="http://ava-soft.ir">AVA-SOFT.IR</a></div>
-                </div>
-              </aside>
-
-              <aside class="widget col-md-3 col-sm-6">
-                <h5 class="widget-title">آیا به کمک نیاز دارید ؟</h5>
-                <p>لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است. <a href="#">ادامه مطلب</a></p>
-              </aside>
-
-              <aside class="widget col-md-3 col-sm-6">
-                <h5 class="widget-title">در تماس باشید</h5>
-                <div class="input-group">
-                  <input type="text" class="form-control" placeholder="ایمیل شما">
-                  <span class="input-group-btn">
-                    <button class="btn btn-danger" type="button"><i class="fa fa-arrow-right"></i></button>
-                  </span>
-                </div>
-                <ul class="social-links">
-                  <li><a href="#"><i class="fa fa-facebook"></i></a></li>
-                  <li><a href="#"><i class="fa fa-twitter"></i></a></li>
-                  <li><a href="#"><i class="fa fa-google-plus"></i></a></li>
-                  <li><a href="#"><i class="fa fa-pinterest"></i></a></li>
-                </ul>
-              </aside>
-
+                آدرس : خیابان خواجه عبدالله انصاری-خیابان عراقی-کوچه زنبق-شماره ۱۱ 
             </div>
           </div>
 
           <div id="sidebar-footer-2">
-            <div class="row">
-
-              <aside class="widget col-sm-6">
-                <h5 class="widget-title">آخرین توییت</h5>
-                <div class="tweet">
-                  لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استفاده از طراحان گرافیک است.<br />– حجت دهنوی –
-                </div>
-              </aside>
-
-              <aside class="widget widget_flickr col-sm-6">
-                <h5 class="widget-title">آخرین عکس ها</h5>
-                <a href="#" class="hover-effect"><img src="http://placehold.it/100x100" /><span class="overlay"><i class="fa fa-plus"></i></span></a>
-                <a href="#" class="hover-effect"><img src="http://placehold.it/100x100" /><span class="overlay"><i class="fa fa-plus"></i></span></a>
-                <a href="#" class="hover-effect"><img src="http://placehold.it/100x100" /><span class="overlay"><i class="fa fa-plus"></i></span></a>
-              </aside>
-
-            </div>
+          تلفن: ۰۲۱-۲۲۳۱۸۲۱۷-۱۹   فاکس: ۲۲۵۱۲۶۵۳ </br> 
+          Email: info@memary-va-mohit.com
           </div>
 
-          <div class="copyright"><p>© 2014 <br />TPEsoft</p></div>
+          <div class="copyright"><p>© 2015 <br />TPEsoft</p></div>
         </div>
       </footer>
       <!-- ************* payane footer *************** -->
