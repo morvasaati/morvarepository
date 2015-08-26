@@ -6,7 +6,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
     </head>
     <body>
-        <p>You have received the following email from <%= "#{ @name } (#{ @email }):" %></p>
-        <p><%= @body %></p>
+        <p>با موضوع : <%="#{@subject}"%>   <br> <%=" #{@body}" %> <br>  از جانب : <%= "#{ @name } (#{ @email }):" %></p>
+        
     </body>
 </html>

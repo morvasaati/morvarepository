@@ -35,6 +35,9 @@ class ReportsController < ApplicationController
     @projects =  Project.all
     @projects.each do |p|
     @projects_name << p.name
+      if not p.nil?
+        @projects_name << p
+      end
     end
   end
 
@@ -92,6 +95,9 @@ class ReportsController < ApplicationController
       format.json { head :no_content }
     end
   end
+  
+  def reportbarayeproject
+  end
 
   private
     # Use callbacks to share common setup or constraints between actions.
@@ -101,6 +107,6 @@ class ReportsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def report_params
-      params.require(:report).permit(:name_project, :description, :title_report, :subject, :document)
+      params.require(:report).permit(:name_project, :description, :title_report, :subject, :document , :project_id)
     end
 end

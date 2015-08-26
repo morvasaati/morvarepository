@@ -32,6 +32,7 @@ class ContactsController < ApplicationController
     name = params[:name]
     email = params[:email]
     body = params[:body]
+    subject = params[:subject]
     # byebug
      UserMailer.contact_email(@contact).deliver_now
     
@@ -80,7 +81,7 @@ class ContactsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def contact_params
-      params.require(:contact).permit(:name, :email, :body)
+      params.require(:contact).permit(:name, :email, :body , :subject)
     end
       # def secure_params
       #   params.require(:contact).permit(:name, :email, :body)

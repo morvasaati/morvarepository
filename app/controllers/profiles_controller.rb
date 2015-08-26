@@ -1,7 +1,7 @@
 class ProfilesController < ApplicationController
   # load_and_authorize_resource :except => :homepage
   before_action :authenticate_user! , :except => [:mannagers, :ourprojects ,  :homepage , :memari , :saze , :tasisat,:taghdirname,:darbareyema ,:tamasbama]
-  before_action :set_profile, only: [:show, :edit, :update, :destroy , :addUser]
+  before_action :set_profile, only: [:show, :edit, :update, :destroy , :addUser , :editUser]
   before_action :check_admin , only: [:addUser]
   # GET /profiles
   # GET /profiles.json
@@ -12,12 +12,39 @@ class ProfilesController < ApplicationController
   # GET /profiles/1
   # GET /profiles/1.json
   def show
+    @profile = current_user
     @projects = Project.all 
     @user = current_user
   end
 
   def newUser
     @user = User.new
+  end
+
+  # GET /profile/editUser
+  def editUser
+    @user = current_user
+  end
+
+  #post /profile/updateUser
+  def updateUser
+    @user = current_user
+    respond_to do |format|
+      if @user.valid_password?(user_update_params[:current_password])
+        params[:user].delete :current_password
+
+        byebug
+        if @user.update(user_update_params)
+          format.html { redirect_to url_for(:action=>'show', :controller=>'profiles' , :id => current_user.id), notice: 'Profile was successfully updated.' }
+          format.json { render :show, status: :ok, location: url_for(:action=>'show', :controller=>'profiles' , :id => current_user.profile.id) }
+        else
+          format.html { render :edit }
+          format.json { render json: @user.errors, status: :unprocessable_entity }
+        end
+      else
+        format.html {redirect_to url_for(:action=>'editUser' , :controller=>'profiles') , notice: 'Your current password is wrong'}
+      end
+    end
   end
 
   def addUser
@@ -107,6 +134,9 @@ class ProfilesController < ApplicationController
   def taghdirname
   end
 
+  def projehabarayesherkat
+  end
+
   def download
     send_file(@filename, :filename => "Binder1 opt.pdf")
   end
@@ -127,6 +157,10 @@ class ProfilesController < ApplicationController
       params.require(:profile).permit(:company_name, :work_experience, :register_number, :tel, :fax, :image , :avatar , :user_id)
     end
     def user_params
-      params.require(:user).permit(:email, :password_confirmation, :password, :role ,:company_name , :work_experience , :register_number , :tel ,:fax)
+      params.require(:user).permit(:email, :password_confirmation, :password, :role ,:company_name , :work_experience ,:avatar, :register_number , :tel ,:fax)
+    end
+
+    def user_update_params
+      params.require(:user).permit(:email, :password_confirmation, :password, :role ,:company_name , :work_experience ,:avatar, :register_number , :tel ,:fax,:current_password)
     end
 end

@@ -38,8 +38,18 @@ class ProjectsController < ApplicationController
 
   # GET /projects/1/edit
   def edit
+    if current_user.role == "کارفرما"
+      redirect_to root_url
+    end
+    @profiles_name = []  
+    @project = Project.new
+    @profiles =  User.all
+    @profiles.each do |p|
+      if not p.nil?
+        @profiles_name << p
+      end
   end
-
+end
   # POST /projects
   # POST /projects.json
   def create

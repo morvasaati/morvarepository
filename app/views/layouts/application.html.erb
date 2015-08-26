@@ -3,6 +3,40 @@
 <head > 
   <title>MemariVaMohit</title>
 
+
+  <meta charset="utf-8">
+
+    <meta name="author" content="ukieweb">
+    <meta name="keywords" content="ukieCard, css3, template, html5 template">
+    <meta name="description" content="ukieCard - Personal Vcard &amp; Resume HTML Template">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <!-- Font Awesome -->
+    <link type="text/css" media="all" href="/assets/Home _ ukieCard_files_css/font-awesome.min.css" rel="stylesheet">
+    <!-- Libs CSS -->
+    <link type="text/css" media="all" href="/assets/Home _ ukieCard_files_css/bootstrap.min.css" rel="stylesheet">
+    <!-- Animate CSS -->
+    <link type="text/css" media="all" href="/assets/Home _ ukieCard_files_css/animate.css" rel="stylesheet">
+    <!-- Template CSS -->
+    <link type="text/css" media="all" href="/assets/Home _ ukieCard_files_css/style.css" rel="stylesheet">
+    <!-- Switcher CSS -->
+    <link type="text/css" media="all" href="/assets/Home _ ukieCard_files_css/switcher.css" rel="stylesheet">
+    <link href="/assets/Home _ ukieCard_files_css/color-blue.css" rel="stylesheet" type="text/css" data-color="color-blue" media="all" id="stylesheet-new">
+    <!-- Responsive CSS -->
+    <link type="text/css" media="all" href="/assets/Home _ ukieCard_files_css/respons.css" rel="stylesheet">
+    <!-- Style Switcher -->
+    <!-- Favicons -->
+    <link rel="apple-touch-icon" sizes="144x144" href="http://ukieweb.com/envato/ukiecard/style1/assets/img/favicons/apple-touch-icon-144x144.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="http://ukieweb.com/envato/ukiecard/style1/assets/img/favicons/apple-touch-icon-114x114.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="http://ukieweb.com/envato/ukiecard/style1/assets/img/favicons/apple-touch-icon-72x72.png">
+    <link rel="apple-touch-icon" href="http://ukieweb.com/envato/ukiecard/style1/assets/img/favicons/apple-touch-icon.png">
+    <link rel="shortcut icon" href="http://ukieweb.com/envato/ukiecard/style1/assets/img/favicons/favicon.png">
+    <!-- Google Fonts -->
+    <link href="/assets/Home _ ukieCard_files_css/css" rel="stylesheet" type="text/css">
+
+
+
+  
+
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%#= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
@@ -42,6 +76,7 @@
 
                         <li><%= link_to "پروژه ها", ourprojects_profiles_path,:method => :get , style: "font-family:BNazanin;font-weight: bold;font-size: 132%;"%></li>
                          
+                         <li><%= link_to "درباره ما", darbareyema_profiles_path,:method => :get , style: "font-family:BNazanin;font-weight: bold;font-size: 132%;"%></li>
 
                         <li><%= link_to "تماس با ما", new_contact_path,:method => :get , style: "font-family:BNazanin;font-weight: bold;font-size: 132%;"%></li>
         <li class="dropdown">
@@ -55,6 +90,16 @@
                             <li style="direction:rtl;"><a href="#">سازه</a></li> -->
           </ul>
         </li>
+        <%if not current_user.nil? and current_user.role == 'ادمین' %>
+              <li><%= link_to "ایجاد کاربر", newUser_profiles_path,:method => :get , style: "font-family:BNazanin;font-weight: bold;font-size: 132%;"%></li>
+              <li><%= link_to "ایجاد پروژه", new_project_path,:method => :get , style: "font-family:BNazanin;font-weight: bold;font-size: 132%;"%></li>
+        <%end%>
+        <%if not current_user.nil? and current_user.role == 'ناظر' %>
+              <li><%= link_to "ایجاد گزارش", new_report_path,:method => :get , style: "font-family:BNazanin;font-weight: bold;font-size: 132%;"%></li>
+        <%end%>
+        <%if not current_user.nil? and current_user.role == 'کارفرما' %>
+              <li><%= link_to "پروفایل من", {:action=>"show", :controller=>"profiles" , :id => current_user.id} , style: "font-family:BNazanin;font-weight: bold;font-size: 132%;"%></li>
+        <%end%>
       </ul>
       
       <ul class="nav navbar-nav navbar-left">
@@ -73,7 +118,7 @@
                      <%= link_to "ورود", new_user_session_path , :class=>"navbar-brand" , style:"margin-left: -110%;color: #AD1137;font-size: 155%;font-family: BNazanin;"%>
                       
                   <% else %>
-                    <%= link_to  'خروج' , destroy_user_session_path ,:class =>"navbar-brand", style:"margin-left: -110%;color: #AD1137;font-size: 155%;font-family: BNazanin;", method: :delete %>
+                    <%= link_to 'خروج' , destroy_user_session_path ,:class =>"navbar-brand", style:"margin-left: -110%;color: #AD1137;font-size: 155%;font-family: BNazanin;" %>
                   <% end %>
       </div>
   </div><!-- /.container-fluid -->

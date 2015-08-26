@@ -39,7 +39,15 @@ Rails.application.routes.draw do
 
 
   devise_for :users
-  resources :reports
+  # devise_for :users do
+  #   match '/users/sign_out' => 'devise/sessions#destroy'
+  # end
+
+  resources :reports do
+    collection do
+      get 'reportbarayeproject'
+    end
+  end
 
   resources :profiles do
     collection do
@@ -51,8 +59,12 @@ Rails.application.routes.draw do
       get 'tamasbama'
       get 'darbareyema'
       get 'taghdirname'
+      get 'projehabarayesherkat'
       get 'newUser'
       post 'addUser'
+      get 'editUser'
+      put 'updateUser'
+      patch 'updateUser'
     end
   end
 

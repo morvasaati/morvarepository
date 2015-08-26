@@ -29,7 +29,8 @@
                             <div class="form-group">
                               <label class="control-label">نام شرکت</label>
                               <select name="project[user_id]">
-                                <%@profiles_name.each do |p| %>
+                              
+                                <%@profiles.each do |p| %>
                                 <%#byebug%>
                                   <%if not p.nil? %>
                                     <option value="<%=p.id%>"><%=p.company_name%></option>

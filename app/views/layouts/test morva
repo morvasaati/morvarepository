@@ -39,6 +39,7 @@
               </ul>
             </div>
             <%end%>
+            
             <%if not current_user.nil? and current_user.role=="ناظر"%>
             <div class="collapse navbar-collapse" id="navbar-collapse-1">
               <ul id="navigation" class="nav navbar-nav navbar-left">
