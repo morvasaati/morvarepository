@@ -72,23 +72,25 @@
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1" style="float:right;">
       <ul class="nav navbar-nav">
-        <li><%= link_to "تقدیر نامه ها", taghdirname_profiles_path,:method => :get , style: "font-family:BNazanin;font-weight: bold;font-size: 132%;"%></li>
+        
 
-                        <li><%= link_to "پروژه ها", ourprojects_profiles_path,:method => :get , style: "font-family:BNazanin;font-weight: bold;font-size: 132%;"%></li>
-                         
-                         <li><%= link_to "درباره ما", darbareyema_profiles_path,:method => :get , style: "font-family:BNazanin;font-weight: bold;font-size: 132%;"%></li>
-
-                        <li><%= link_to "تماس با ما", new_contact_path,:method => :get , style: "font-family:BNazanin;font-weight: bold;font-size: 132%;"%></li>
+                        
         <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" style="font-family:BNazanin;font-weight: bold;font-size: 132%;">کادر فنی <span class="caret"></span></a>
           <ul class="dropdown-menu">
             <li><%= link_to "معماری", memari_profiles_path,:method => :get , :class => "button" , style: "font-family:BNazanin;font-weight: bold;font-size: 132%;"%></li>
                           <li><%= link_to "تاسیسات", tasisat_profiles_path, :method => :get ,:class => "button" , style: "font-family:BNazanin;font-weight: bold;font-size: 132%;"%></li>
                           <li><%= link_to "سازه", saze_profiles_path,:method => :get , :class => "button" , style: "font-family:BNazanin;font-weight: bold;font-size: 132%;"%></li>
+                          <li><%= link_to "محیط زیست", mohitezist_profiles_path,:method => :get , :class => "button" , style: "font-family:BNazanin;font-weight: bold;font-size: 132%;"%></li>
                             <!-- <li style="direction:rtl;"><a href="#">تاسیسات</a></li>
                             <li style="direction:rtl;"><a href="#">معماری</a></li>
                             <li style="direction:rtl;"><a href="#">سازه</a></li> -->
           </ul>
+          <li><%= link_to "پروژه ها", ourprojects_profiles_path,:method => :get , style: "font-family:BNazanin;font-weight: bold;font-size: 132%;"%></li>
+                        <li><%= link_to "تقدیر نامه ها", taghdirname_profiles_path,:method => :get , style: "font-family:BNazanin;font-weight: bold;font-size: 132%;"%></li>                 
+                         <li><%= link_to "درباره ما", darbareyema_profiles_path,:method => :get , style: "font-family:BNazanin;font-weight: bold;font-size: 132%;"%></li>
+
+                        <li><%= link_to "تماس با ما", new_contact_path,:method => :get , style: "font-family:BNazanin;font-weight: bold;font-size: 132%;"%></li>
         </li>
         <%if not current_user.nil? and current_user.role == 'ادمین' %>
               <li><%= link_to "ایجاد کاربر", newUser_profiles_path,:method => :get , style: "font-family:BNazanin;font-weight: bold;font-size: 132%;"%></li>

@@ -56,6 +56,7 @@ Rails.application.routes.draw do
       get 'memari'
       get 'saze'
       get 'tasisat'
+      get 'mohitezist'
       get 'tamasbama'
       get 'darbareyema'
       get 'taghdirname'

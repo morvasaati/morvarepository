@@ -20,7 +20,7 @@
 <script type="text/javascript" src="http://www.dreamtemplate.com/dreamcodes/contact_forms/js/tsc_form_contact.js"></script>
 </head>
 <body >
-<%= form_for(@contact,  :html => {:class => "tsc_form_contact_light frame tbar" , :style => "text-align:right;margin-left:28%;"}) do |f| %>
+<%= form_for(@contact,  :html => {:class => "tsc_form_contact_light frame tbar" , :style => "text-align:right;margin-left:60%;"}) do |f| %>
   <% if @contact.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@contact.errors.count, "error") %> prohibited this contact from being saved:</h2>

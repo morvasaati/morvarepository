@@ -1,6 +1,6 @@
 class ProfilesController < ApplicationController
   # load_and_authorize_resource :except => :homepage
-  before_action :authenticate_user! , :except => [:mannagers, :ourprojects ,  :homepage , :memari , :saze , :tasisat,:taghdirname,:darbareyema ,:tamasbama]
+  before_action :authenticate_user! , :except => [:mannagers, :ourprojects ,  :homepage , :memari , :saze , :tasisat,:taghdirname,:darbareyema ,:tamasbama ,:mohitezist]
   before_action :set_profile, only: [:show, :edit, :update, :destroy , :addUser , :editUser]
   before_action :check_admin , only: [:addUser]
   # GET /profiles
@@ -135,6 +135,9 @@ class ProfilesController < ApplicationController
   end
 
   def projehabarayesherkat
+  end
+
+  def mohitezist
   end
 
   def download
