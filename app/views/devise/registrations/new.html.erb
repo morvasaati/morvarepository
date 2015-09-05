@@ -10,6 +10,8 @@
 
 </head>
 <body>
+<% if not current_user.nil? %>
+<% if current_user.role == 'ادمین' %>
 <!-- multistep form -->
 <!-- <form id="mmsform">  -->
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name) ,:html => {:class => "mmsform"}) do |f| %>
@@ -36,8 +38,6 @@
 
   <div class="field">
     <%= f.label :role %><br />
-    <%= f.label :role, "ادمین", :value => "ادمین"  %>
-    <%= f.radio_button :role, "ادمین" %>
     <%= f.label :role, "ناظر", :value => "ناظر" %>
     <%= f.radio_button :role, "ناظر" %>
     <%= f.label :role, "کارفرما", :value => "کارفرما" %>
@@ -56,6 +56,8 @@
 
 
 <!--  </form> --> 
+<%end%>
+<%end%>
 <%end%>
 <!-- jQuery -->
 <script src="http://thecodeplayer.com/uploads/js/jquery-1.9.1.min.js" type="text/javascript"></script>

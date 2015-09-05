@@ -4,7 +4,7 @@ class ContactsController < ApplicationController
   # GET /contacts
   # GET /contacts.json
   def index
-    @contacts = Contact.all
+    redirect_to root_url
   end
 
   # GET /contacts/1
@@ -40,8 +40,8 @@ class ContactsController < ApplicationController
     respond_to do |format|
       if @contact.save
         # UserMailer.contact_email(@contact).deliver
-        format.html { redirect_to @contact, notice: 'Contact was successfully created.' }
-        format.json { render :show, status: :created, location: @contact }
+        format.html { redirect_to root_url, notice: 'Contact was successfully created.' }
+        format.json { render :show, status: :created, location: root_url }
       else
         format.html { render :new }
         format.json { render json: @contact.errors, status: :unprocessable_entity }
@@ -55,7 +55,7 @@ class ContactsController < ApplicationController
     respond_to do |format|
       if @contact.update(contact_params)
         format.html { redirect_to @contact, notice: 'Contact was successfully updated.' }
-        format.json { render :show, status: :ok, location: @contact }
+        format.json { render :show, status: :ok, location: root_url }
       else
         format.html { render :edit }
         format.json { render json: @contact.errors, status: :unprocessable_entity }

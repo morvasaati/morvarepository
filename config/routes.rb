@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  resources :contacts
+  resources :contacts , only: [:new , :index]
 
   resources :cities do 
     collection do
