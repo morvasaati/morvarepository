@@ -66,16 +66,58 @@
           <div style="margin-left:40%">به تار نمای مشاوران مهندسین مشاور معماری و محیط خوش آمدید </div>
         </nav>
           <nav class="navbar navbar-default">
-            <div class="container-fluid" style="margin-right:31%;">
-    <!-- Brand and toggle get grouped for better mobile display -->
+            
+        <%if  current_user.nil?  %>
+<div class="container-fluid" style="margin-right:31%;">
 
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1" style="float:right;">
+      
+      <ul class="nav navbar-nav">
 
-    <!-- Collect the nav links, forms, and other content for toggling -->
+                        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" style="font-family:BNazanin;font-weight: bold;font-size: 132%;">کادر فنی <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li><%= link_to "معماری", memari_profiles_path,:method => :get , :class => "button" , style: "font-family:BNazanin;font-weight: bold;font-size: 132%;float:right;"%></li>
+                          <li><%= link_to "سازه", saze_profiles_path,:method => :get , :class => "button" , style: "font-family:BNazanin;font-weight: bold;font-size: 132%;float:right;"%></li>
+                          <li><%= link_to "تاسیسات", tasisat_profiles_path, :method => :get ,:class => "button" , style: "font-family:BNazanin;font-weight: bold;font-size: 132%;float:right;"%></li>
+                          
+                          <li><%= link_to "محیط زیست", mohitezist_profiles_path,:method => :get , :class => "button" , style: "font-family:BNazanin;font-weight: bold;font-size: 132%;float:right;"%></li>
+                            <!-- <li style="direction:rtl;"><a href="#">تاسیسات</a></li>
+                            <li style="direction:rtl;"><a href="#">معماری</a></li>
+                            <li style="direction:rtl;"><a href="#">سازه</a></li> -->
+          </ul>
+          <li><%= link_to "پروژه ها", ourprojects_profiles_path,:method => :get , style: "font-family:BNazanin;font-weight: bold;font-size: 132%;"%></li>
+                        <li><%= link_to "تقدیر نامه ها", taghdirname_profiles_path,:method => :get , style: "font-family:BNazanin;font-weight: bold;font-size: 132%;"%></li>                 
+                         <li><%= link_to "درباره ما", darbareyema_profiles_path,:method => :get , style: "font-family:BNazanin;font-weight: bold;font-size: 132%;"%></li>
+
+                        <li><%= link_to "تماس با ما", new_contact_path,:method => :get , style: "font-family:BNazanin;font-weight: bold;font-size: 132%;"%></li>
+        </li>
+        <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                  <span class="sr-only">Toggle navigation</span>
+                  <span class="icon-bar"></span>
+                  <span class="icon-bar"></span>
+                  <span class="icon-bar"></span>
+                </button>
+            <% if current_user.nil? %>
+                     <%= link_to "ورود", new_user_session_path , :class=>"navbar-brand" , style:"margin-left: -110%;color: #AD1137;font-size: 155%;font-family: BNazanin;"%>
+                      
+                  <% else %>
+                    <%= link_to 'خروج' , destroy_user_session_path ,:class =>"navbar-brand", style:"margin-left: -110%;color: #AD1137;font-size: 155%;font-family: BNazanin;" %>
+                  <% end %>
+      </div>
+      </ul>
+      <ul class="nav navbar-nav navbar-left">
+      <li><%= link_to "خانه", root_url,:method => :get , style: "font-family:BNazanin;font-weight: bold;font-size: 132%;"%></li>
+
+      </ul>
+      </div>
+      </div>
+        <%end%>
+        <%if not current_user.nil? and current_user.role == 'ادمین' %>
+        <div class="container-fluid" style="margin-right:20%;">
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1" style="float:right;">
       <ul class="nav navbar-nav">
-        
-
-                        
         <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" style="font-family:BNazanin;font-weight: bold;font-size: 132%;">کادر فنی <span class="caret"></span></a>
           <ul class="dropdown-menu">
@@ -94,24 +136,9 @@
 
                         <li><%= link_to "تماس با ما", new_contact_path,:method => :get , style: "font-family:BNazanin;font-weight: bold;font-size: 132%;"%></li>
         </li>
-        <%if not current_user.nil? and current_user.role == 'ادمین' %>
               <li><%= link_to "ایجاد کاربر", newUser_profiles_path,:method => :get , style: "font-family:BNazanin;font-weight: bold;font-size: 132%;"%></li>
               <li><%= link_to "ایجاد پروژه", new_project_path,:method => :get , style: "font-family:BNazanin;font-weight: bold;font-size: 132%;"%></li>
-        <%end%>
-        <%if not current_user.nil? and current_user.role == 'ناظر' %>
-              <li><%= link_to "ایجاد گزارش", new_report_path,:method => :get , style: "font-family:BNazanin;font-weight: bold;font-size: 132%;"%></li>
-        <%end%>
-        <%if not current_user.nil? and current_user.role == 'کارفرما' %>
-              <li><%= link_to "پروفایل من", {:action=>"show", :controller=>"profiles" , :id => current_user.id} , style: "font-family:BNazanin;font-weight: bold;font-size: 132%;"%></li>
-        <%end%>
-      </ul>
-      
-      <ul class="nav navbar-nav navbar-left">
-      <li><%= link_to "خانه", root_url,:method => :get , style: "font-family:BNazanin;font-weight: bold;font-size: 132%;"%></li>
-
-      </ul>
-    </div><!-- /.navbar-collapse -->
-      <div class="navbar-header">
+              <div class="navbar-header">
                 <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
                   <span class="sr-only">Toggle navigation</span>
                   <span class="icon-bar"></span>
@@ -125,7 +152,104 @@
                     <%= link_to 'خروج' , destroy_user_session_path ,:class =>"navbar-brand", style:"margin-left: -110%;color: #AD1137;font-size: 155%;font-family: BNazanin;" %>
                   <% end %>
       </div>
-  </div><!-- /.container-fluid -->
+      </ul>
+      <ul class="nav navbar-nav navbar-left">
+      <li><%= link_to "خانه", root_url,:method => :get , style: "font-family:BNazanin;font-weight: bold;font-size: 132%;"%></li>
+
+      </ul>
+      </div>
+      </div>
+        <%end%>
+        <%if not current_user.nil? and current_user.role == 'ناظر' %>
+        <div class="container-fluid" style="margin-right:31%;">
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1" style="float:right;">
+      <ul class="nav navbar-nav">
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" style="font-family:BNazanin;font-weight: bold;font-size: 132%;">کادر فنی <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li><%= link_to "معماری", memari_profiles_path,:method => :get , :class => "button" , style: "font-family:BNazanin;font-weight: bold;font-size: 132%;float:right;"%></li>
+                          <li><%= link_to "سازه", saze_profiles_path,:method => :get , :class => "button" , style: "font-family:BNazanin;font-weight: bold;font-size: 132%;float:right;"%></li>
+                          <li><%= link_to "تاسیسات", tasisat_profiles_path, :method => :get ,:class => "button" , style: "font-family:BNazanin;font-weight: bold;font-size: 132%;float:right;"%></li>
+                          
+                          <li><%= link_to "محیط زیست", mohitezist_profiles_path,:method => :get , :class => "button" , style: "font-family:BNazanin;font-weight: bold;font-size: 132%;float:right;"%></li>
+                            <!-- <li style="direction:rtl;"><a href="#">تاسیسات</a></li>
+                            <li style="direction:rtl;"><a href="#">معماری</a></li>
+                            <li style="direction:rtl;"><a href="#">سازه</a></li> -->
+          </ul>
+          <li><%= link_to "پروژه ها", ourprojects_profiles_path,:method => :get , style: "font-family:BNazanin;font-weight: bold;font-size: 132%;"%></li>
+                        <li><%= link_to "تقدیر نامه ها", taghdirname_profiles_path,:method => :get , style: "font-family:BNazanin;font-weight: bold;font-size: 132%;"%></li>                 
+                         <li><%= link_to "درباره ما", darbareyema_profiles_path,:method => :get , style: "font-family:BNazanin;font-weight: bold;font-size: 132%;"%></li>
+
+                        <li><%= link_to "تماس با ما", new_contact_path,:method => :get , style: "font-family:BNazanin;font-weight: bold;font-size: 132%;"%></li>
+        </li>
+              <li><%= link_to "ایجاد گزارش", new_report_path,:method => :get , style: "font-family:BNazanin;font-weight: bold;font-size: 132%;"%></li>
+              <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                  <span class="sr-only">Toggle navigation</span>
+                  <span class="icon-bar"></span>
+                  <span class="icon-bar"></span>
+                  <span class="icon-bar"></span>
+                </button>
+            <% if current_user.nil? %>
+                     <%= link_to "ورود", new_user_session_path , :class=>"navbar-brand" , style:"margin-left: -110%;color: #AD1137;font-size: 155%;font-family: BNazanin;"%>
+                      
+                  <% else %>
+                    <%= link_to 'خروج' , destroy_user_session_path ,:class =>"navbar-brand", style:"margin-left: -110%;color: #AD1137;font-size: 155%;font-family: BNazanin;" %>
+                  <% end %>
+      </div>
+      </ul>
+      </div>
+      </div>
+        <%end%>
+        <%if not current_user.nil? and current_user.role == 'کارفرما' %>
+        <div class="container-fluid" style="margin-right:31%;">
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1" style="float:right;">
+      <ul class="nav navbar-nav">
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" style="font-family:BNazanin;font-weight: bold;font-size: 132%;">کادر فنی <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li><%= link_to "معماری", memari_profiles_path,:method => :get , :class => "button" , style: "font-family:BNazanin;font-weight: bold;font-size: 132%;float:right;"%></li>
+                          <li><%= link_to "سازه", saze_profiles_path,:method => :get , :class => "button" , style: "font-family:BNazanin;font-weight: bold;font-size: 132%;float:right;"%></li>
+                          <li><%= link_to "تاسیسات", tasisat_profiles_path, :method => :get ,:class => "button" , style: "font-family:BNazanin;font-weight: bold;font-size: 132%;float:right;"%></li>
+                          
+                          <li><%= link_to "محیط زیست", mohitezist_profiles_path,:method => :get , :class => "button" , style: "font-family:BNazanin;font-weight: bold;font-size: 132%;float:right;"%></li>
+                            <!-- <li style="direction:rtl;"><a href="#">تاسیسات</a></li>
+                            <li style="direction:rtl;"><a href="#">معماری</a></li>
+                            <li style="direction:rtl;"><a href="#">سازه</a></li> -->
+          </ul>
+          <li><%= link_to "پروژه ها", ourprojects_profiles_path,:method => :get , style: "font-family:BNazanin;font-weight: bold;font-size: 132%;"%></li>
+                        <li><%= link_to "تقدیر نامه ها", taghdirname_profiles_path,:method => :get , style: "font-family:BNazanin;font-weight: bold;font-size: 132%;"%></li>                 
+                         <li><%= link_to "درباره ما", darbareyema_profiles_path,:method => :get , style: "font-family:BNazanin;font-weight: bold;font-size: 132%;"%></li>
+
+                        <li><%= link_to "تماس با ما", new_contact_path,:method => :get , style: "font-family:BNazanin;font-weight: bold;font-size: 132%;"%></li>
+        </li>
+              <li><%= link_to "پروفایل من", {:action=>"show", :controller=>"profiles" , :id => current_user.id} , style: "font-family:BNazanin;font-weight: bold;font-size: 132%;"%></li>
+              <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                  <span class="sr-only">Toggle navigation</span>
+                  <span class="icon-bar"></span>
+                  <span class="icon-bar"></span>
+                  <span class="icon-bar"></span>
+                </button>
+            <% if current_user.nil? %>
+                     <%= link_to "ورود", new_user_session_path , :class=>"navbar-brand" , style:"margin-left: -110%;color: #AD1137;font-size: 155%;font-family: BNazanin;"%>
+                      
+                  <% else %>
+                    <%= link_to 'خروج' , destroy_user_session_path ,:class =>"navbar-brand", style:"margin-left: -110%;color: #AD1137;font-size: 155%;font-family: BNazanin;" %>
+                  <% end %>
+      </div>
+      </ul>
+        <ul class="nav navbar-nav navbar-left">
+      <li><%= link_to "خانه", root_url,:method => :get , style: "font-family:BNazanin;font-weight: bold;font-size: 132%;"%></li>
+
+      </ul>
+      </div>
+      </div>
+        <%end%>
+
+      
+      
+
 </nav>
       </header>
 
