@@ -54,7 +54,8 @@
     <link href="/assets/css/template.css" rel="stylesheet">
   </head>
   
-<body style="font-family:BYekan; <% if params[:controller] == 'contacts' %> background-size:cover;background-image: url(/assets/14.jpg);%><%end%>">
+<body style="font-family:BYekan;<% if params[:controller] == 'profiles' and  params[:action] == 'darbareyema' %> background-size:cover;background-image: url(/assets/slider/z1.jpg);height:100%;%><%end%> 
+<% if params[:controller] == 'contacts' %> background-size:cover;background-image: url(/assets/14.jpg); %><%end%>">
 
 <!-- **************** header ***************** -->
 
@@ -62,10 +63,10 @@
 
       <header id="header" class="">
       <nav id="topbar" class="site-topbar visible-lg visible-md">
-          <div style="margin-left:40%">به وب سایت مشاوران معماری و محیط خوش آمدید </div>
+          <div style="margin-left:40%">به تار نمای مشاوران مهندسین مشاور معماری و محیط خوش آمدید </div>
         </nav>
           <nav class="navbar navbar-default">
-            <div class="container-fluid" style="margin-right:34%;">
+            <div class="container-fluid" style="margin-right:31%;">
     <!-- Brand and toggle get grouped for better mobile display -->
 
 
@@ -79,8 +80,9 @@
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" style="font-family:BNazanin;font-weight: bold;font-size: 132%;">کادر فنی <span class="caret"></span></a>
           <ul class="dropdown-menu">
             <li><%= link_to "معماری", memari_profiles_path,:method => :get , :class => "button" , style: "font-family:BNazanin;font-weight: bold;font-size: 132%;float:right;"%></li>
-                          <li><%= link_to "تاسیسات", tasisat_profiles_path, :method => :get ,:class => "button" , style: "font-family:BNazanin;font-weight: bold;font-size: 132%;float:right;"%></li>
                           <li><%= link_to "سازه", saze_profiles_path,:method => :get , :class => "button" , style: "font-family:BNazanin;font-weight: bold;font-size: 132%;float:right;"%></li>
+                          <li><%= link_to "تاسیسات", tasisat_profiles_path, :method => :get ,:class => "button" , style: "font-family:BNazanin;font-weight: bold;font-size: 132%;float:right;"%></li>
+                          
                           <li><%= link_to "محیط زیست", mohitezist_profiles_path,:method => :get , :class => "button" , style: "font-family:BNazanin;font-weight: bold;font-size: 132%;float:right;"%></li>
                             <!-- <li style="direction:rtl;"><a href="#">تاسیسات</a></li>
                             <li style="direction:rtl;"><a href="#">معماری</a></li>
@@ -138,27 +140,24 @@
 <div style="margin-right:15%;margin-left:15%" >
 <%= yield %>
 </div>
-<br><br>
-<br><br>
-<br><br>
-<br><br>
+
 <!-- ********** footer ********** -->
 
  <footer id="footer" class="site-footer" >
         <div class="container">
 
-          <div id="sidebar-footer-1">
-            <div class="row">
-                آدرس : خیابان خواجه عبدالله انصاری-خیابان عراقی-کوچه زنبق-شماره ۱۱ 
+          <div id="sidebar-footer-1" >
+            <div class="row" style="padding-top:0%;padding-bottom:1%;font-size:17px;">
+                آدرس : خیابان خواجه عبدالله انصاری - خیابان شهید عراقی - کوچه زنبق - شماره ۱۱ - واحد ۱و۲
             </div>
           </div>
 
-          <div id="sidebar-footer-2">
-          تلفن: ۰۲۱-۲۲۳۱۸۲۱۷-۱۹   فاکس: ۲۲۵۱۲۶۵۳ </br> 
+          <div id="sidebar-footer-2" style="padding-top:1%;padding-bottom:1%;font-size:17px;">
+          تلفن: ۱۹-۲۲۳۱۸۲۱۷- ۰۲۱  فاکس: ۲۲۵۱۲۶۵۳ </br> 
           Email: info@memary-va-mohit.com
           </div>
 
-          <div class="copyright"><p>© 2015 <br />TPEsoft</p></div>
+          <div class="copyright" style="padding-top:1%;padding-bottom:1%;font-size:17px;"><p>© 2015 <br />TPEsoft</p></div>
         </div>
       </footer>
       <!-- ************* payane footer *************** -->

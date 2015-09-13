@@ -65,13 +65,15 @@ class CitiesController < ApplicationController
   def tehran
   end
 
-  def esfehan
+  def esfahan
+    redirect_to :controller => 'profiles', :action => 'ourprojects'
   end
 
   def ghom  
   end
 
   def gilan
+    redirect_to :controller => 'profiles', :action => 'ourprojects'
   end
 
   def golestan
@@ -84,27 +86,34 @@ class CitiesController < ApplicationController
   end
 
   def kermanshah
+     redirect_to :controller => 'profiles', :action => 'ourprojects'
   end
 
   def azarbayjansharghi
+    redirect_to :controller => 'profiles', :action => 'ourprojects'
   end
 
   def azarbayjangharbi
+    redirect_to :controller => 'profiles', :action => 'ourprojects'
   end
 
   def ardebil
+    redirect_to :controller => 'profiles', :action => 'ourprojects'
   end
 
   def eilam
+    redirect_to :controller => 'profiles', :action => 'ourprojects'
   end
 
   def boushehr
+    redirect_to :controller => 'profiles', :action => 'ourprojects'
   end
 
   def charmahalebakhtiari
   end
 
   def khorasanjounubi
+    redirect_to :controller => 'profiles', :action => 'ourprojects'
   end
 
   def khorasanshomali
@@ -114,12 +123,15 @@ class CitiesController < ApplicationController
   end
 
   def khuzestan
+    redirect_to :controller => 'profiles', :action => 'ourprojects'
   end
 
   def zanjan
   end
 
   def systanvabalouchestan
+    redirect_to :controller => 'profiles', :action => 'ourprojects'
+
   end
 
   def semnan
@@ -129,12 +141,15 @@ class CitiesController < ApplicationController
   end
 
   def ghazvin
+     redirect_to :controller => 'profiles', :action => 'ourprojects'
   end
 
   def kohgiluyevabayerahmad
+    redirect_to :controller => 'profiles', :action => 'ourprojects'
   end
 
   def kordestan
+     redirect_to :controller => 'profiles', :action => 'ourprojects'
   end
 
   def lorestan
@@ -147,9 +162,11 @@ class CitiesController < ApplicationController
   end
 
   def hamedan
+     redirect_to :controller => 'profiles', :action => 'ourprojects'
   end
 
   def yazd
+    redirect_to :controller => 'profiles', :action => 'ourprojects'
   end
 
   def alborz

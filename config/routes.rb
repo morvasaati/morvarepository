@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   resources :cities do 
     collection do
       get 'tehran'
-      get 'esfehan'
+      get 'esfahan'
       get 'ghom'
       get 'gilan'
       get 'golestan'
