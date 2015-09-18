@@ -44,6 +44,7 @@
         return false;
       }
     }
+
   });
 
   $('.nav a').on('click', function(){
@@ -99,4 +100,5 @@
     return false;
 
   });
+
 })(jQuery);
