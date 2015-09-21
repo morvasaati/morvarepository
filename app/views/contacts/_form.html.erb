@@ -12,7 +12,7 @@
 </head>
 
 <body >
-<%= form_for(@contact,  :html => {:class => "tsc_form_contact_light frame tbar" , :style => "text-align:right;margin-left:60%;"}) do |f| %>
+<%= form_for(@contact,  :html => {:class => "tsc_form_contact_light frame tbar" , :style => "text-align:right;margin-left:60%;margin-top:-3%;margin-bottom:-1%;"}) do |f| %>
   <% if @contact.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@contact.errors.count, "error") %> prohibited this contact from being saved:</h2>
@@ -36,7 +36,7 @@
     <%= f.text_field :subject , class: "form-input" , style: "margin-left:-2%;"%>
     <!-- input type="text" name="subject" class="form-input" /> -->
     <label for="message" , style="margin-left:auto;font-family:BNazanin;    font-size: 107%;">متن پیام </label>
-    <%= f.text_area :body , class: "form-input" , style: "margin-left:-2%;height:120px;"%>
+    <%= f.text_area :body , class: "form-input" , style: "margin-left:-2%;height:100px;"%>
     <!-- <textarea name="message" class="form-input" required></textarea> -->
 <!--     <div class="form-btn">
     </div> -->
@@ -51,8 +51,6 @@
 </body>
 </html>
 
-
-<br>
 
 
 
