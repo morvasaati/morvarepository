@@ -83,6 +83,7 @@ class CitiesController < ApplicationController
   end
 
   def kerman
+    redirect_to :controller => 'profiles', :action => 'ourprojects'
   end
 
   def kermanshah
