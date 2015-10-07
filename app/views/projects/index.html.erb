@@ -41,7 +41,9 @@
                 <th ><%= link_to 'جزئيات بیشتر', project , class:"btn btn-sh green hidden-print margin-bottom-5"%></td>
                 <th ><%= link_to 'ویرایش', edit_project_path(project) , class:"btn btn-sh blue hidden-print margin-bottom-5" %></td>
                 <% if current_user.role == "ادمین"%>
-                <th ><%= link_to 'حذف', project, method: :delete, data: { confirm: 'Are you sure?' } , class:"btn btn-sh red hidden-print margin-bottom-5" %></td>
+                <th > <%= button_to "حذف", project, :method=>:delete, :class=>:destroy ,data: { confirm: 'Are you sure?' } , class:"btn btn-sh red hidden-print margin-bottom-5" %> </td>
+
+               
                 <%end%>
       </tr>
     <% end %>
