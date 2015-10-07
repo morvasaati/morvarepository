@@ -143,7 +143,8 @@
                         <li><%= link_to "تماس با ما", new_contact_path,:method => :get , style: "font-family:BNazanin;font-weight: bold;font-size: 132%;"%></li>
         </li>
               <li><%= link_to "ایجاد کاربر", newUser_profiles_path,:method => :get , style: "font-family:BNazanin;font-weight: bold;font-size: 132%;"%></li>
-              <li><%= link_to "ایجاد پروژه", new_project_path,:method => :get , style: "font-family:BNazanin;font-weight: bold;font-size: 132%;"%></li>
+             <li> <%= link_to "لیست پروژه ها", projects_path, style: "font-family:BNazanin;font-weight: bold;font-size: 132%;" %> </li>
+              
               <div class="navbar-header">
                 <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
                   <span class="sr-only">Toggle navigation</span>

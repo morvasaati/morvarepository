@@ -42,7 +42,6 @@ class ProjectsController < ApplicationController
       redirect_to root_url
     end
     @profiles_name = []  
-    @project = Project.new
     @profiles =  User.all
     @profiles.each do |p|
       if not p.nil?
