@@ -44,6 +44,7 @@ class ProjectsController < ApplicationController
     @profiles_name = []  
     @profiles =  User.all
     @profiles.each do |p|
+    
       if not p.nil?
         @profiles_name << p
       end
