@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  resources :userprojects
+
+  resources :performs
+
   resources :contacts , only: [:new , :index]
 
   resources :cities do 

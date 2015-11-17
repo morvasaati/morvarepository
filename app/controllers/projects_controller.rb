@@ -102,6 +102,6 @@ end
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def project_params
-      params.require(:project).permit(:name, :start_time, :end_time, :image , :avatar , :user_id, :progress_percent , :karfarma_name)
+      params.require(:project).permit(:name, :start_time, :end_time, :image , :avatar , :user_id, :progress_percent , :karfarma_name , :nazer_name , :nazer_id)
     end
 end

@@ -1,7 +1,10 @@
 class User < ActiveRecord::Base
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
-  has_many :projects
+  
+  has_many :projects, class_name: "Project", foreign_key: "user_id"
+  has_many :nazer_projects, class_name: "Project", foreign_key: "nazer_id"
+  
   has_one :profile
 
   devise :database_authenticatable, :registerable,

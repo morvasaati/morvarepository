@@ -32,7 +32,7 @@
                               
                                 <%@profiles.each do |p| %>
                                 <%#byebug%>
-                                  <%if not p.nil? %>
+                                  <%if not p.nil? and p.role == "کارفرما" %>
                                     <option value="<%=p.id%>"><%=p.company_name%></option>
                                   <%end%>
                                 <%end%>
@@ -40,6 +40,23 @@
                               <%#= f.select :user_id, select_tag(:user_id, @profiles_name) %>
 <!--                               <input type="text" class="form-control" placeholder="Enter text"> -->
                             </div>
+
+                             <div class="form-group">
+                              <label class="control-label">نام ناظر</label>
+                              <select name="project[nazer_id]">
+                              
+                                <%@profiles.each do |p| %>
+                                <%#byebug%>
+                                  <%if not p.nil? and p.role == "ناظر" %>
+                                    <option value="<%=p.id%>"><%=p.company_name%></option>
+                                  <%end%>
+                                <%end%>
+                              </select>
+                              <%#= f.select :user_id, select_tag(:user_id, @profiles_name) %>
+<!--                               <input type="text" class="form-control" placeholder="Enter text"> -->
+                            </div>
+
+
                             <div class="form-group">
                               <label class="control-label">نام پروژه</label>
                               <%= f.text_field :name, class: "form-control"  ,placeholder:"نام پروژه" %>

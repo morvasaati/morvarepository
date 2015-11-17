@@ -19,7 +19,7 @@ class ReportsController < ApplicationController
       redirect_to root_url
     end
     @projects_name = []
-    @projects = Project.all
+    @projects = current_user.nazer_projects.all
     @projects.each do |p|
     @projects_name << p.name
     end
@@ -32,7 +32,7 @@ class ReportsController < ApplicationController
     end
     @projects_name = []  
     @report = Report.new
-    @projects =  Project.all
+    @projects =  current_user.nazer_projects.all
     @projects.each do |p|
     @projects_name << p.name
       if not p.nil?
