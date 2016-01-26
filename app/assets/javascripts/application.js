@@ -13,8 +13,8 @@
 //= require bootstrap.min
 //= require bootstrap-3.1.1.min
 //= require main
-
-
+//= require window.slider
+//= require jquery.min
 
 
 

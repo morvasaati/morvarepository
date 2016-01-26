@@ -13,6 +13,7 @@
  *= require template
  *= require slider
  *= require site
+ *= bootstrap.min
  
  *= require_tree .
  *= require_self
