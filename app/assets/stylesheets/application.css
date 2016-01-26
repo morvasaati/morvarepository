@@ -12,6 +12,8 @@
  *
  *= require template
  *= require slider
+ *= require site
+ 
  *= require_tree .
  *= require_self
  */
