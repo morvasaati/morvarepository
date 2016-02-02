@@ -10,13 +10,9 @@
 // Read Sprockets README (https://github.com/sstephenson/sprockets#sprockets-directives) for details
 // about supported directives.
 //
-//= require bootstrap.min
-//= require bootstrap-3.1.1.min
+//= require jquery1.min
+//= require bootstrap1.min
 //= require main
 //= require window.slider
-//= require jquery.min
 
 
-
-
-//= require_tree .
